@@ -33,6 +33,7 @@ docker_tasks 'pure-ftpd', "-p 21:21 \
   expose 21, passive_port_range
 
   cmd "cat #{key_path} #{cert_path} > /etc/ssl/private/pure-ftpd.pem && \
-       pure-ftpd --tls=1 --createhomedir -P ftp.raviqqe.com \
-                 -p #{passive_port_range.gsub '-', ':'}"
+       pure-ftpd --tls=1 --createhomedir --anonymouscantupload \
+                 --forcepassiveip ftp.raviqqe.com \
+                 --passiveportrange #{passive_port_range.gsub '-', ':'}"
 end
