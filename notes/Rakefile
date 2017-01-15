@@ -35,8 +35,8 @@ end
 docker_tasks 'notes', "-p #{WEB_PORT}:443 \
                        -v #{CERT_PATH}:#{cert_path} \
                        -v #{KEY_PATH}:#{key_path}" do
-  run 'apt -y update && apt -y upgrade'
-  run 'apt -y install nginx git curl ruby ruby-kramdown ruby-nokogiri '\
+  run 'apt -y update --fix-missing && apt -y upgrade && '\
+      'apt -y install nginx git curl ruby ruby-kramdown ruby-nokogiri '\
       'ruby-rmagick inkscape'
 
   run 'gem install map-rec xml-dsl'
