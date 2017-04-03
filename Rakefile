@@ -7,7 +7,7 @@ task :cert do
       --non-interactive --agree-tos --expand"
 end
 
-image_dirs = %w(git_daemon nginx_proxy notes nsd pure_ftpd)
+image_dirs = %w(git_daemon nginx_proxy notes pure_ftpd)
 
 %i(rerun push).each do |name|
   task name do
